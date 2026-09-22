@@ -26,12 +26,29 @@
 
     <h2>Daftar Mahasiswa</h2>
 
+    <table>
+    <tr>
+        <th>NO.</th>
+        <th>NIM</th>
+        <th>NAMA MAHASISWA</th>
+        <th>ALAMAT</th>
+        <th>NO. TELP</th>
+    </tr>
+
     <?php
     $i = 1;
-    foreach ($datamhs as $mhs) {
-        echo $i++ . '. ' . $mhs['nama'] . ' ' . $mhs['nim'] . '<br>';
-    }
+    foreach($datamhs as $mhs){
     ?>
+    <tr>
+        <td><?= $i++; ?></td>
+        <td><?= $mhs['nim']; ?></td>
+        <td><?= $mhs['nama']; ?></td>
+        <td><?= $mhs['alamat']; ?></td>
+        <td><?= $mhs['telp']; ?></td>
+    </tr>
+    <?php } ?>
+
+</table>
 
 </body>
 </html>
