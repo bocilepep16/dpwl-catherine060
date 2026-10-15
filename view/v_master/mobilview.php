@@ -1,26 +1,57 @@
-<h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-
- <div class="content">
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-
-                            <a href="<?= base_url('Mobil_C/create_mobil') ?>"
-                               class="btn btn-primary">
-                                <i class="fas fa-car"></i>
-                                Tambah Data Mobil
+                            <a href="<?= base_url('Mobil_C/create_mobil') ?>" class="btn btn-primary mb-3">
+                                <i class="fas fa-car"></i> Tambah Data Mobil
                             </a>
 
+                            <style>
+                                .table-mobil-responsive {
+                                    width: 100%;
+                                    overflow-x: auto;
+                                }
+
+                                .table-mobil {
+                                    width: 100%;
+                                    margin-bottom: 0;
+                                    font-size: 14px;
+                                    table-layout: auto;
+                                }
+
+                                .table-mobil th,
+                                .table-mobil td {
+                                    padding: 8px 10px;
+                                    vertical-align: middle;
+                                    white-space: normal;
+                                    overflow-wrap: break-word;
+                                }
+
+                                .table-mobil th {
+                                    text-align: center;
+                                    font-weight: 700;
+                                }
+
+                                .table-mobil .kolom-foto {
+                                    min-width: 70px;
+                                }
+
+                                .table-mobil .kolom-aksi {
+                                    min-width: 85px;
+                                    white-space: nowrap;
+                                }
+
+                                .table-mobil .btn-sm {
+                                    padding: 4px 8px;
+                                    font-size: 12px;
+                                    margin: 2px 0;
+                                }
+                            </style>
+    <div class="table-mobil-responsive">
       <table class="table table-bordered table-striped">
           <thead>
               <tr>
@@ -46,7 +77,7 @@
                         <td><?= $m['nbagasi'] ?></td>
                         <td><?= $m['jns_mobil'] . '<br>' . $m['transmisi'] ?></td>
                         <td><?= $m['thn_buat'] ?></td>
-                        <td><?= $m['ft_depan'] ?? '' ?><br><?= $m['ft_blg'] ?? '' ?><br><?= $m['ft_interior'] ?? '' ?></td>
+                        <td><?= $m['ft_depan'] ?? '' ?><br><?= $m['ft_blkg'] ?? '' ?><br><?= $m['ft_interior'] ?? '' ?></td>
                         <td><?= $m['hrg_hari'] ?></td>
                         <td><?= $m['cttn_unit'] ?></td>
                         <td><?= $m['status_unit'] ?></td>
@@ -58,3 +89,4 @@
                     <?php endforeach; ?>
             </tbody>
         </table>
+    </div>
