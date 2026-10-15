@@ -13,10 +13,10 @@
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="AdminLTE-3.0.2/plugins/jquery/jquery.min.js"></script>
+<script src="<?= base_url('AdminLTE-3.0.2/plugins/jquery/jquery.min.js') ?>"></script>
 <!-- Bootstrap 4 -->
-<script src="AdminLTE-3.0.2/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url('AdminLTE-3.0.2/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 <!-- AdminLTE App -->
-<script src="AdminLTE-3.0.2/dist/js/adminlte.min.js"></script>
+<script src="<?= base_url('AdminLTE-3.0.2/dist/js/adminlte.min.js') ?>"></script>
 </body>
 </html>
