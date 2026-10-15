@@ -7,7 +7,6 @@ class Login_C extends Controller
         $this->load->view('login', $sisipns);
     }
 
-
     public function CekLogin()
     {
         $email = $this->load->post('email');
