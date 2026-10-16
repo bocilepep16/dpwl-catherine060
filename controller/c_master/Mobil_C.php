@@ -32,7 +32,7 @@ class Mobil_C extends Controller
     }
 
     $ft_depan = 'Depan' . $this->load->post('no_plat');
-    $ft_blg = 'Belakang' . $this->load->post('no_plat');
+    $ft_blkg = 'Belakang' . $this->load->post('no_plat');
     $ft_interior = 'Interior' . $this->load->post('no_plat');
 
     $folder = dirname(__DIR__, 2) . '/img/';
@@ -56,7 +56,7 @@ class Mobil_C extends Controller
         'transmisi' => $this->load->post('transmisi'),
         'thn_buat' => $this->load->post('thn_buat'),
         'ft_depan' => $namaFiledepan,
-        'ft_blg' => $ft_blg,
+        'ft_blkg' => $ft_blkg,
         'ft_interior' => $ft_interior,
         'hrg_hari' => $this->load->post('hrg_hari'),
         'cttn_unit' => $this->load->post('cttn_unit'),
