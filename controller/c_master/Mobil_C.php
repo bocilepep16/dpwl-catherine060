@@ -42,6 +42,8 @@ class Mobil_C extends Controller
         $ext = ['image/jpeg' => 'jpg', 'image/png' => 'png'];
         if ($info && isset($ext[$info['mime']]) && $file['size'] <= 2 * 1024 * 1024) {
             $namaFiledepan = $ft_depan . '.' . $ext[$info['mime']];
+            $namaFilebelakang = $ft_blkg . '.' . $ext[$info['mime']];
+            $namaFileinterior = $ft_interior . '.' . $ext[$info['mime']];
     } else {
         echo "<script>alert('Gagal simpan gambar, cek ukuran dan format..!');</script>";
     }
@@ -56,8 +58,8 @@ class Mobil_C extends Controller
         'transmisi' => $this->load->post('transmisi'),
         'thn_buat' => $this->load->post('thn_buat'),
         'ft_depan' => $namaFiledepan,
-        'ft_blkg' => $ft_blkg,
-        'ft_interior' => $ft_interior,
+        'ft_blkg' => $namaFilebelakang,
+        'ft_interior' => $namaFileinterior,
         'hrg_hari' => $this->load->post('hrg_hari'),
         'cttn_unit' => $this->load->post('cttn_unit'),
         'status_unit' => $this->load->post('status_unit')
