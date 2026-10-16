@@ -30,5 +30,39 @@ class Mobil_C extends Controller
         </script>";
         exit;
     }
-}
+
+    $ft_depan = 'Depan' . $this->load->post('no_plat');
+    $ft_blg = 'Belakang' . $this->load->post('no_plat');
+    $ft_interior = 'Interior' . $this->load->post('no_plat');
+
+    $data = [
+        'no_plat' => $this->load->post('no_plat'),
+        'nm_mobil' => $this->load->post('nm_mobil'),
+        'nkursi' => $this->load->post('nkursi'),
+        'nbagasi' => $this->load->post('nbagasi'),
+        'jns_mobil' => $this->load->post('jns_mobil'),
+        'transmisi' => $this->load->post('transmisi'),
+        'thn_buat' => $this->load->post('thn_buat'),
+        'ft_depan' => $ft_depan,
+        'ft_blg' => $ft_blg,
+        'ft_interior' => $ft_interior,
+        'hrg_hari' => $this->load->post('hrg_hari'),
+        'cttn_unit' => $this->load->post('cttn_unit'),
+        'status_unit' => $this->load->post('status_unit')
+    ];
+
+    $simpan = $mobil->simpan($data);
+
+    if ($simpan) {
+        echo "<script>
+            alert('Data mobil berhasil disimpan!');
+            window.location.href = '" . base_url('Mobil_C/index') . "';
+        </script>";
+    } else {
+        echo "<script>
+            alert('Data mobil gagal disimpan!');
+            window.history.back();
+        </script>";
+        }
+    }
 } 
