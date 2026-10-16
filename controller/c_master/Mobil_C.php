@@ -19,4 +19,16 @@ class Mobil_C extends Controller
         $this->load->view('v_master/create_mobilview');
         $this->load->view('layout/footer');
     }  
+
+    public function simpan()
+    {
+    $mobil = $this->load->model('m_master/Mobil_M');
+    if ($mobil->cekplat($this->load->post('no_plat'))) {
+        echo "<script>
+            alert('Nomor plat sudah terdaftar!');
+            window.history.back();
+        </script>";
+        exit;
+    }
+}
 } 
