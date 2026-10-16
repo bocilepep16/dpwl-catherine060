@@ -124,8 +124,8 @@
                                     <label>Status Unit</label>
                                     <select name="status_unit" class="form-control" required>
                                         <option value="">-- Pilih Status --</option>
-                                        <option value="Tersedia">Tersedia</option>
-                                        <option value="Disewa">Disewa</option>
+                                        <option value="Aktif">Aktif</option>
+                                        <option value="Tidak Aktif">Tidak Aktif</option>
                                     </select>
                                 </div>
                             </div>
