@@ -15,7 +15,7 @@
           <img src="<?= base_url('foto.png') ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?= 'user: ' . $nm_user ?></a>
+          <a href="#" class="d-block"><?= 'user: ' . htmlspecialchars($nm_user ?? 'fakhril') ?></a>
         </div>
       </div>
 
