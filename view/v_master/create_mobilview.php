@@ -51,7 +51,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Nama Mobil</label>
-                                    <input type="text" name="nama_mobil" class="form-control" placeholder="Contoh: Toyota Avanza" required>
+                                    <input type="text" name="nm_mobil" class="form-control" placeholder="Contoh: Toyota Avanza" required>
                                 </div>
                             </div>
 
@@ -59,7 +59,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Jumlah Kursi</label>
-                                    <input type="number" name="jumlah_kursi" class="form-control" required>
+                                    <input type="number" name="nkursi" class="form-control" required>
                                 </div>
                             </div>
 
@@ -67,7 +67,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Jumlah Bagasi</label>
-                                    <input type="number" name="jumlah_bagasi" class="form-control" required>
+                                    <input type="number" name="nbagasi" class="form-control" required>
                                 </div>
                             </div>
 
@@ -75,7 +75,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Jenis Mobil</label>
-                                    <select name="jenis_mobil" class="form-control" required>
+                                    <select name="jns_mobil" class="form-control" required>
                                         <option value="">-- Pilih Jenis --</option>
                                         <option value="MPV">MPV</option>
                                         <option value="SUV">SUV</option>
@@ -101,7 +101,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tahun Pembuatan</label>
-                                    <input type="number" name="tahun_pembuatan" class="form-control" placeholder="Contoh: 2024" required>
+                                    <input type="number" name="thn_buat" class="form-control" placeholder="Contoh: 2024" required>
                                 </div>
                             </div>
 
@@ -113,7 +113,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Rp</span>
                                         </div>
-                                        <input type="number" name="biaya_per_hari" class="form-control" placeholder="Contoh: 350000" required>
+                                        <input type="number" name="hrg_hari" class="form-control" placeholder="Contoh: 350000" required>
                                     </div>
                                 </div>
                             </div>
@@ -145,21 +145,21 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Foto Depan</label>
-                                    <input type="file" name="foto_depan" class="form-control-file" accept="image/*">
+                                    <input type="file" name="ft_depan" class="form-control-file" accept="image/*">
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Foto Belakang</label>
-                                    <input type="file" name="foto_belakang" class="form-control-file" accept="image/*">
+                                    <input type="file" name="ft_blkng" class="form-control-file" accept="image/*">
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Foto Interior</label>
-                                    <input type="file" name="foto_interior" class="form-control-file" accept="image/*">
+                                    <input type="file" name="ft_interior" class="form-control-file" accept="image/*">
                                 </div>
                             </div>
 
@@ -168,7 +168,7 @@
                         <!-- Catatan Unit -->
                         <div class="form-group">
                             <label>Catatan Unit</label>
-                            <textarea name="catatan_unit" class="form-control" rows="3" placeholder="Masukkan catatan mengenai kendaraan"></textarea>
+                            <textarea name="cttn_unit" class="form-control" rows="3" placeholder="Masukkan catatan mengenai kendaraan"></textarea>
                         </div>
 
                     </div>
