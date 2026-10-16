@@ -35,6 +35,19 @@ class Mobil_C extends Controller
     $ft_blg = 'Belakang' . $this->load->post('no_plat');
     $ft_interior = 'Interior' . $this->load->post('no_plat');
 
+    $folder = dirname(__DIR__, 2) . '/img/';
+    if (isset($_FILES['ft_depan']) && $_FILES['ft_depan']['error'] == 0) {
+        $file = $_FILES['ft_depan'];
+        $info = getimagesize($file['tmp_name']);
+        $ext = ['image/jpeg' => 'jpg', 'image/png' => 'png'];
+        if ($info && isset($ext[$info['mime']]) && $file['size'] <= 2 * 1024 * 1024) {
+            $namaFiledepan = $ft_depan . '.' . $ext[$info['mime']];
+            move_uploaded_file($file['tmp_name'], $folder . $namaFiledepan);
+    } else {
+        echo "<script>alert('Gagal simpan gambar, cek ukuran dan format..!');</script>";
+    }
+}
+
     $data = [
         'no_plat' => $this->load->post('no_plat'),
         'nm_mobil' => $this->load->post('nm_mobil'),
