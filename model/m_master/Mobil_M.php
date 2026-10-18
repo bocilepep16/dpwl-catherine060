@@ -24,18 +24,10 @@ class Mobil_M extends Model
         jns_mobil, transmisi, thn_buat,ft_depan, ft_blkg, ft_interior,hrg_hari, cttn_unit, 
         status_unit) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-    if (!$sql) {
-        die("Prepare gagal: " . $this->db->error);
-    }
-
-    $sql->bind_param("ssiissssssdss",$data['no_plat'],$data['nm_mobil'],$data['nkursi'],
-    $data['nbagasi'],$data['jns_mobil'],$data['transmisi'],$data['thn_buat'],
-    $data['ft_depan'],$data['ft_blkg'],$data['ft_interior'],$data['hrg_hari'],
-    $data['cttn_unit'],$data['status_unit']);
-     if (!$sql->execute()) {
-        die("Execute gagal: " . $sql->error);
-    }
-
-    return true;
+        $sql->bind_param("ssiissssssdss",$data['no_plat'],$data['nm_mobil'],$data['nkursi'],
+        $data['nbagasi'],$data['jns_mobil'],$data['transmisi'],$data['thn_buat'],
+        $data['ft_depan'],$data['ft_blkg'],$data['ft_interior'],$data['hrg_hari'],
+        $data['cttn_unit'],$data['status_unit']);
+        return $sql->execute();
     }
 }
