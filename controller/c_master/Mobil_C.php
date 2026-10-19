@@ -35,42 +35,45 @@ class Mobil_C extends Controller
     $ft_blkg = 'Belakang' . $this->load->post('no_plat');
     $ft_interior = 'Interior' . $this->load->post('no_plat');
 
+    $folder = dirname(__DIR__, 2) . '/img/';
+    if (!is_dir($folder)) {mkdir($folder, 0775, true);}
     $nmgambar = $_FILES['ft_depan']['tmp_name'];
     $ekstensi = explode(".", $_FILES['ft_depan']['name']);
-    $ekstensi = end($ekstensi);
+    $ekstensi = strtolower(end($ekstensi));
     $ft_depan = $ft_depan . '.' . $ekstensi;
-    $target_dir = dirname(__DIR__, 2) . '/img/' . $ft_depan;
-
+    $target_dir = $folder . $ft_depan;
     if ($ekstensi != "jpg" && $ekstensi != "png" && $ekstensi != "jpeg") {
-        echo "<script>alert('Gagal simpan gambar depan, format jpg, png dan jpeg..!');</script>";
+        echo "<script>alert('Gagal simpan gambar depan, format jpg, png, dan jpeg..!');</script>";
     } else {
         move_uploaded_file($nmgambar, $target_dir);
     }
 
+    $folder = dirname(__DIR__, 2) . '/img/';
+    if (!is_dir($folder)) {mkdir($folder, 0775, true);}
     $nmgambar = $_FILES['ft_blkng']['tmp_name'];
     $ekstensi = explode(".", $_FILES['ft_blkng']['name']);
-    $ekstensi = end($ekstensi);
+    $ekstensi = strtolower(end($ekstensi));
     $ft_blkng = $ft_blkng . '.' . $ekstensi;
-    $target_dir = dirname(__DIR__, 2) . '/img/' . $ft_blkng;
-
+    $target_dir = $folder . $ft_blkng;
     if ($ekstensi != "jpg" && $ekstensi != "png" && $ekstensi != "jpeg") {
-        echo "<script>alert('Gagal simpan gambar belakang, format jpg, png dan jpeg..!');</script>";
+        echo "<script>alert('Gagal simpan gambar belakang, format jpg, png, dan jpeg..!');</script>";
     } else {
         move_uploaded_file($nmgambar, $target_dir);
     }
 
+    $folder = dirname(__DIR__, 2) . '/img/';
+    if (!is_dir($folder)) {mkdir($folder, 0775, true);}
     $nmgambar = $_FILES['ft_interior']['tmp_name'];
     $ekstensi = explode(".", $_FILES['ft_interior']['name']);
-    $ekstensi = end($ekstensi);
+    $ekstensi = strtolower(end($ekstensi));
     $ft_interior = $ft_interior . '.' . $ekstensi;
-    $target_dir = dirname(__DIR__, 2) . '/img/' . $ft_interior;
-
+    $target_dir = $folder . $ft_interior;
     if ($ekstensi != "jpg" && $ekstensi != "png" && $ekstensi != "jpeg") {
-        echo "<script>alert('Gagal simpan gambar interior, format jpg, png dan jpeg..!');</script>";
+        echo "<script>alert('Gagal simpan gambar interior, format jpg, png, dan jpeg..!');</script>";
     } else {
         move_uploaded_file($nmgambar, $target_dir);
     }
-
+    
     $data = [
         'no_plat' => $this->load->post('no_plat'),
         'nm_mobil' => $this->load->post('nm_mobil'),
