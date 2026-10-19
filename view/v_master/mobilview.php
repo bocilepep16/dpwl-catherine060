@@ -100,9 +100,9 @@
                         <td><?= $m['nbagasi'] ?></td>
                         <td><?= $m['jns_mobil'] . '<br>' . $m['transmisi'] ?></td>
                         <td><?= $m['thn_buat'] ?></td>
-                        <td><img src="<?= base_url('img/' . $m['ft_depan']) ?>" style="width: 50px; height: auto;"><br>
-                            <img src="<?= base_url('img/' . $m['ft_blkng']) ?>" style="width: 50px; height: auto;"><br>
-                            <img src="<?= base_url('img/' . $m['ft_interior']) ?>" style="width: 50px; height: auto;"><br>
+                        <td><img src="<?= base_url('img/' . $m['ft_depan']) ?>" style="width: 100px; height: auto;"><br>
+                            <img src="<?= base_url('img/' . $m['ft_blkng']) ?>" style="width: 100px; height: auto;"><br>
+                            <img src="<?= base_url('img/' . $m['ft_interior']) ?>" style="width: 100px; height: auto;"><br>
                         </td>
                         <td><?= $m['hrg_hari'] ?></td>
                         <td><?= $m['cttn_unit'] ?></td>
