@@ -35,12 +35,11 @@ class Mobil_C extends Controller
     $ft_blkg = 'Belakang' . $this->load->post('no_plat');
     $ft_interior = 'Interior' . $this->load->post('no_plat');
 
-    
     $nmgambar = $_FILES['ft_depan']['tmp_name'];
     $ekstensi = explode(".", $_FILES['ft_depan']['name']);
     $ekstensi = end($ekstensi);
     $ft_depan = $ft_depan . '.' . $ekstensi;
-    $target_dir = dirname(__DIR__) . '/img/' . $ft_depan;
+    $target_dir = dirname(__DIR__, 2) . '/img/' . $ft_depan;
 
     if ($ekstensi != "jpg" && $ekstensi != "png" && $ekstensi != "jpeg") {
         echo "<script>alert('Gagal simpan gambar depan, format jpg, png dan jpeg..!');</script>";
@@ -51,8 +50,8 @@ class Mobil_C extends Controller
     $nmgambar = $_FILES['ft_blkng']['tmp_name'];
     $ekstensi = explode(".", $_FILES['ft_blkng']['name']);
     $ekstensi = end($ekstensi);
-    $ft_depan = $ft_blkng . '.' . $ekstensi;
-    $target_dir = dirname(__DIR__) . '/img/' . $ft_blkng;
+    $ft_blkng = $ft_blkng . '.' . $ekstensi;
+    $target_dir = dirname(__DIR__, 2) . '/img/' . $ft_blkng;
 
     if ($ekstensi != "jpg" && $ekstensi != "png" && $ekstensi != "jpeg") {
         echo "<script>alert('Gagal simpan gambar belakang, format jpg, png dan jpeg..!');</script>";
@@ -63,8 +62,8 @@ class Mobil_C extends Controller
     $nmgambar = $_FILES['ft_interior']['tmp_name'];
     $ekstensi = explode(".", $_FILES['ft_interior']['name']);
     $ekstensi = end($ekstensi);
-    $ft_depan = $ft_interior . '.' . $ekstensi;
-    $target_dir = dirname(__DIR__) . '/img/' . $ft_interior;
+    $ft_interior = $ft_interior . '.' . $ekstensi;
+    $target_dir = dirname(__DIR__, 2) . '/img/' . $ft_interior;
 
     if ($ekstensi != "jpg" && $ekstensi != "png" && $ekstensi != "jpeg") {
         echo "<script>alert('Gagal simpan gambar interior, format jpg, png dan jpeg..!');</script>";
