@@ -101,7 +101,7 @@
                         <td><?= $m['jns_mobil'] . '<br>' . $m['transmisi'] ?></td>
                         <td><?= $m['thn_buat'] ?></td>
                         <td><img src="<?= base_url('img/' . $m['ft_depan']) ?>" style="width: 100px; height: auto;"><br>
-                            <img src="<?= base_url('img/' . $m['ft_blkng']) ?>" style="width: 100px; height: auto;"><br>
+                            <img src="<?= base_url('img/' . $m['ft_blkg']) ?>" style="width: 100px; height: auto;"><br>
                             <img src="<?= base_url('img/' . $m['ft_interior']) ?>" style="width: 100px; height: auto;"><br>
                         </td>
                         <td><?= $m['hrg_hari'] ?></td>
