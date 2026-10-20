@@ -32,7 +32,7 @@ class Mobil_C extends Controller
     }
 
     $ft_depan = 'Depan' . $this->load->post('no_plat');
-    $ft_blkng = 'Belakang' . $this->load->post('no_plat');
+    $ft_blkg = 'Belakang' . $this->load->post('no_plat');
     $ft_interior = 'Interior' . $this->load->post('no_plat');
 
     $folder = dirname(__DIR__, 2) . '/img/';
@@ -50,11 +50,11 @@ class Mobil_C extends Controller
 
     $folder = dirname(__DIR__, 2) . '/img/';
     if (!is_dir($folder)) {mkdir($folder, 0775, true);}
-    $nmgambar = $_FILES['ft_blkng']['tmp_name'];
-    $ekstensi = explode(".", $_FILES['ft_blkng']['name']);
+    $nmgambar = $_FILES['ft_blkg']['tmp_name'];
+    $ekstensi = explode(".", $_FILES['ft_blkg']['name']);
     $ekstensi = strtolower(end($ekstensi));
-    $ft_blkng = $ft_blkng . '.' . $ekstensi;
-    $target_dir = $folder . $ft_blkng;
+    $ft_blkg = $ft_blkg . '.' . $ekstensi;
+    $target_dir = $folder . $ft_blkg;
     if ($ekstensi != "jpg" && $ekstensi != "png" && $ekstensi != "jpeg") {
         echo "<script>alert('Gagal simpan gambar belakang, format jpg, png, dan jpeg..!');</script>";
     } else {
@@ -83,7 +83,7 @@ class Mobil_C extends Controller
         'transmisi' => $this->load->post('transmisi'),
         'thn_buat' => $this->load->post('thn_buat'),
         'ft_depan' => $ft_depan,
-        'ft_blkng' => $ft_blkng,
+        'ft_blkg' => $ft_blkg,
         'ft_interior' => $ft_interior,
         'hrg_hari' => $this->load->post('hrg_hari'),
         'cttn_unit' => $this->load->post('cttn_unit'),
