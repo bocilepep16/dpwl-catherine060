@@ -152,7 +152,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Foto Belakang</label>
-                                    <input type="file" name="ft_blkng" class="form-control-file" accept="image/*">
+                                    <input type="file" name="ft_blkg" class="form-control-file" accept="image/*">
                                 </div>
                             </div>
 
