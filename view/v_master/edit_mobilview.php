@@ -140,7 +140,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-warning"><i class="fas fa-save"></i> Simpan Perubahan</button>
+                        <button type="submit" class="btn btn-warning"><i class="fas fa-save"></i> Simpan</button>
                         <a href="<?= base_url('Mobil_C/index') ?>" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
                     </div>
                 </form>
