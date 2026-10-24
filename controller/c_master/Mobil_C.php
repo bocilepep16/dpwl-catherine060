@@ -105,7 +105,6 @@ class Mobil_C extends Controller
         }
     }
 
-    
     public function edit_mobil($no_plat = null)
     {
         if ($no_plat === null || $no_plat === '') {
@@ -137,6 +136,110 @@ class Mobil_C extends Controller
         $this->load->view('layout/sidebar', $info);
         $this->load->view('v_master/edit_mobilview', $data);
         $this->load->view('layout/footer');
+    }
+
+    
+    public function update_mobil()
+    {
+        $no_plat = $this->load->post('no_plat');
+
+        if (empty($no_plat)) {
+            echo "<script> alert('Nomor plat tidak boleh kosong!'); window.history.back(); </script>";
+            return;
+        }
+
+        $mobil = $this->load->model('m_master/Mobil_M');
+        $lama = $mobil->getMobilByPlat($no_plat);
+
+        if (!$lama) {
+            echo "<script> alert('Data mobil tidak ditemukan!');
+                window.location.href = '" . base_url('Mobil_C/index') . "'; </script>";
+            return;
+        }
+
+        $folder = dirname(__DIR__, 2) . '/img/';
+        if (!is_dir($folder)) {
+            mkdir($folder, 0775, true);
+        }
+        // Foto lama digunakan jika tidak ada foto baru.
+        $foto = [
+            'ft_depan' => $lama['ft_depan'],
+            'ft_blkg' => $lama['ft_blkg'],
+            'ft_interior' => $lama['ft_interior']
+        ];
+
+        $fields = ['ft_depan', 'ft_blkg', 'ft_interior'];
+
+        foreach ($fields as $field) {
+            if (
+                !isset($_FILES[$field]) ||
+                $_FILES[$field]['error'] === UPLOAD_ERR_NO_FILE
+            ) {
+                continue;
+            }
+
+            if ($_FILES[$field]['error'] !== UPLOAD_ERR_OK) {
+                echo "<script>
+                    alert('Upload foto gagal!');
+                    window.history.back();
+                </script>";
+                return;
+            }
+
+            $ext = strtolower(
+                pathinfo($_FILES[$field]['name'], PATHINFO_EXTENSION)
+            );
+
+            if (!in_array($ext, ['jpg', 'jpeg', 'png'], true)) {
+                echo "<script>
+                    alert('Foto harus berformat JPG, JPEG, atau PNG!');
+                    window.history.back();
+                </script>";
+                return;
+            }
+
+            $nama = $field . '_' .
+                preg_replace('/[^A-Za-z0-9_-]/', '', $no_plat) .
+                '_' . uniqid() . '.' . $ext;
+
+            if (!move_uploaded_file($_FILES[$field]['tmp_name'], $folder . $nama)) {
+                echo "<script> alert('Foto gagal disimpan!'); window.history.back(); </script>"; 
+                return;
+                }
+
+            $foto[$field] = $nama;
+        }
+
+        $data = [
+            'no_plat' => $no_plat,
+            'nm_mobil' => $this->load->post('nm_mobil'),
+            'nkursi' => $this->load->post('nkursi'),
+            'nbagasi' => $this->load->post('nbagasi'),
+            'jns_mobil' => $this->load->post('jns_mobil'),
+            'transmisi' => $this->load->post('transmisi'),
+            'thn_buat' => $this->load->post('thn_buat'),
+            'ft_depan' => $foto['ft_depan'],
+            'ft_blkg' => $foto['ft_blkg'],
+            'ft_interior' => $foto['ft_interior'],
+            'hrg_hari' => $this->load->post('hrg_hari'),
+            'cttn_unit' => $this->load->post('cttn_unit'),
+            'status_unit' => $this->load->post('status_unit')
+        ];
+
+        $hasil = $mobil->ubah($data);
+
+        if ($hasil) {
+            echo "<script>
+                alert('Data mobil berhasil diperbarui!');
+                window.location.href = '" .
+                base_url('Mobil_C/index') . "';
+            </script>";
+        } else {
+            echo "<script>
+                alert('Data mobil gagal diperbarui!');
+                window.history.back();
+            </script>";
+        }
     }
 
 } 
