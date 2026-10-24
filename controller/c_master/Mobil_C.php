@@ -104,4 +104,39 @@ class Mobil_C extends Controller
         </script>";
         }
     }
+
+    
+    public function edit_mobil($no_plat = null)
+    {
+        if ($no_plat === null || $no_plat === '') {
+            echo "<script>
+                alert('Nomor plat tidak ditemukan!');
+                window.location.href = '" .
+                base_url('Mobil_C/index') . "';
+            </script>";
+            return;
+        }
+
+        $mobil = $this->load->model('m_master/Mobil_M');
+
+        $data['mobil'] = $mobil->getMobilByPlat($no_plat);
+
+        if (!$data['mobil']) {
+            echo "<script>
+                alert('Data mobil tidak ditemukan!');
+                window.location.href = '" .
+                base_url('Mobil_C/index') . "';
+            </script>";
+            return;
+        }
+
+        $info['nm_user'] =
+            explode('@', $this->session->userdata('emailuser'))[0];
+
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar', $info);
+        $this->load->view('v_master/edit_mobilview', $data);
+        $this->load->view('layout/footer');
+    }
+
 } 
