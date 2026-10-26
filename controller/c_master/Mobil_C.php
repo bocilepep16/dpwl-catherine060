@@ -242,33 +242,35 @@ class Mobil_C extends Controller
         }
     }
 
-    public function hapus_mobil($no_plat = null)
+    public function hapus($no_plat)
     {
-        if ($no_plat === null || $no_plat === '') {
-            echo "<script> alert('Nomor plat tidak ditemukan!'); window.location.href = '" . base_url('Mobil_C/index') . "';
-            </script>";
-            return;
-        }
-
         $mobil = $this->load->model('m_master/Mobil_M');
+        $dt = $mobil->getMobilByPlat($no_plat);
 
-        // Pastikan data mobil tersedia sebelum dihapus.
-        $data = $mobil->getMobilByPlat($no_plat);
+        $ft_depan = $dt['Gambar_Mobil']['ft_depan'];
+        $ft_blkg = $dt['Gambar_Mobil']['ft_blkg'];
+        $ft_interior = $dt['Gambar_Mobil']['ft_interior'];
 
-        if (!$data) {
-            echo "<script> alert('Data mobil tidak ditemukan!'); window.location.href = '" . base_url('Mobil_C/index') . "';
-            </script>";
-            return;
-        }
+        $hapus = $mobil->hapusMobil($no_plat);
 
-        // Hapus data mobil melalui Model.
-        $hasil = $mobil->hapus($no_plat);
+        if ($hapus) {
+            $folder = dirname(__DIR__, 2) . '/img/';
+            $gambar = [$ft_depan, $ft_blkg, $ft_interior];
 
-        if ($hasil) {
-            echo "<script> alert('Data mobil berhasil dihapus!'); window.location.href = '" . base_url('Mobil_C/index') . "';
+            foreach ($gambar as $file) {
+                if (!empty($file) && file_exists($folder . $file)) {
+                    unlink($folder . $file);
+                }
+            }
+
+            echo "<script>
+                alert('Data mobil berhasil dihapus!');
+                window.location.href = '" . base_url('Mobil_C/index') . "';
             </script>";
         } else {
-            echo "<script> alert('Data mobil gagal dihapus!'); window.location.href = '" . base_url('Mobil_C/index') . "';
+            echo "<script>
+                alert('Data mobil gagal dihapus!');
+                window.history.back();
             </script>";
         }
     }
