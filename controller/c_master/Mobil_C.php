@@ -246,7 +246,6 @@ class Mobil_C extends Controller
     {
         $mobil = $this->load->model('m_master/Mobil_M');
         $dt = $mobil->getMobilByPlat($no_plat);
-
         $ft_depan = $dt['Gambar_Mobil']['ft_depan'];
         $ft_blkg = $dt['Gambar_Mobil']['ft_blkg'];
         $ft_interior = $dt['Gambar_Mobil']['ft_interior'];
