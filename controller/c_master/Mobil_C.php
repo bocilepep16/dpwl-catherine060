@@ -251,7 +251,7 @@ class Mobil_C extends Controller
         $ft_blkg = $dt['Gambar_Mobil']['ft_blkg'];
         $ft_interior = $dt['Gambar_Mobil']['ft_interior'];
 
-        $hapus = $mobil->hapusMobil($no_plat);
+        $hapus = $mobil->HapusDtMobil($no_plat);
 
         if ($hapus) {
             $folder = dirname(__DIR__, 2) . '/img/';
