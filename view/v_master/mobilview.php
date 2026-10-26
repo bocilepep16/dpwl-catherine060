@@ -110,10 +110,12 @@
                         <td>
                             <a href="<?= base_url('Mobil_C/edit_mobil/' . urlencode($m['no_plat'])) ?>"
                             class="btn btn-warning btn-sm"> <i class="fas fa-edit"></i> Edit</a>
-                            <form action="<?= base_url('Mobil_C/hapus_mobil/' . urlencode($m['no_plat'])) ?>" method="post"
-                                style="display:inline;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus mobil <?= htmlspecialchars($m['no_plat'], ENT_QUOTES, 'UTF-8') ?>?');">
-                                <button type="submit" class="btn btn-danger btn-sm"> <i class="fas fa-trash"></i> Hapus </button>
-                            </form>
+
+                            <a href="<?= base_url('Mobil_C/hapus/' . $m['no_plat']) ?>"
+                                class="btn btn-danger btn-sm" 
+                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                Hapus
+                            </a>
                         </td>
                     </tr>
                     <?php endforeach; ?>
