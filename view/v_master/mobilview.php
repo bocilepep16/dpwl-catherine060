@@ -113,7 +113,7 @@
                             <form action="<?= base_url('Mobil_C/hapus_mobil/' . urlencode($m['no_plat'])) ?>" method="post"
                                 style="display:inline;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus mobil <?= htmlspecialchars($m['no_plat'], ENT_QUOTES, 'UTF-8') ?>?');">
                                 <button type="submit" class="btn btn-danger btn-sm"> <i class="fas fa-trash"></i> Hapus </button>
-                            </form>>
+                            </form>
                         </td>
                     </tr>
                     <?php endforeach; ?>
