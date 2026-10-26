@@ -242,4 +242,34 @@ class Mobil_C extends Controller
         }
     }
 
+    public function hapus_mobil($no_plat = null)
+    {
+        if ($no_plat === null || $no_plat === '') {
+            echo "<script> alert('Nomor plat tidak ditemukan!'); window.location.href = '" . base_url('Mobil_C/index') . "';
+            </script>";
+            return;
+        }
+
+        $mobil = $this->load->model('m_master/Mobil_M');
+
+        // Pastikan data mobil tersedia sebelum dihapus.
+        $data = $mobil->getMobilByPlat($no_plat);
+
+        if (!$data) {
+            echo "<script> alert('Data mobil tidak ditemukan!'); window.location.href = '" . base_url('Mobil_C/index') . "';
+            </script>";
+            return;
+        }
+
+        // Hapus data mobil melalui Model.
+        $hasil = $mobil->hapus($no_plat);
+
+        if ($hasil) {
+            echo "<script> alert('Data mobil berhasil dihapus!'); window.location.href = '" . base_url('Mobil_C/index') . "';
+            </script>";
+        } else {
+            echo "<script> alert('Data mobil gagal dihapus!'); window.location.href = '" . base_url('Mobil_C/index') . "';
+            </script>";
+        }
+    }
 } 
