@@ -272,4 +272,12 @@ class Mobil_C extends Controller
             </script>";
         }
     }
+
+    public function keluar()
+    {
+        $this->session->unset_userdata('emailuser');
+        $this->session->set_flashdata('pesan', 'Berhasil Logout');
+        redirect('login_C/index');
+        exit;
+    }
 } 
