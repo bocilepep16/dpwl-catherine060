@@ -137,6 +137,39 @@
                   <th>Aksi</th>
               </tr>
           </thead>
+
+            <div id="modalGambar" class="modal-gambar">
+                <span class="tutup-gambar" onclick="tutupGambar()">&times;</span>
+                    <img id="gambarBesar" src="" alt="Foto mobil ukuran besar">
+            </div>
+
+            <script>
+                function tampilkanGambar(src) {
+                    const modal = document.getElementById('modalGambar');
+                    const gambar = document.getElementById('gambarBesar');
+
+                    gambar.src = src;
+                    modal.style.display = 'flex';
+                }
+
+                function tutupGambar() {
+                    document.getElementById('modalGambar').style.display = 'none';
+                    document.getElementById('gambarBesar').src = '';
+                }
+
+                document.getElementById('modalGambar').addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        tutupGambar();
+                    }
+                });
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                        tutupGambar();
+                    }
+                });
+            </script>
+
           <tbody> 
                 <?php foreach ($dtmobil as $m) : ?>
                     <tr>
@@ -146,9 +179,12 @@
                         <td><?= $m['nbagasi'] ?></td>
                         <td><?= $m['jns_mobil'] . '<br>' . $m['transmisi'] ?></td>
                         <td><?= $m['thn_buat'] ?></td>
-                        <td><img src="<?= base_url('img/' . $m['ft_depan']) ?>" style="width: 100px; height: auto;"><br>
-                            <img src="<?= base_url('img/' . $m['ft_blkg']) ?>" style="width: 100px; height: auto;"><br>
-                            <img src="<?= base_url('img/' . $m['ft_interior']) ?>" style="width: 100px; height: auto;"><br>
+                        <td><img src="<?= base_url('img/' . htmlspecialchars($m['ft_depan'], ENT_QUOTES, 'UTF-8')) ?>"
+                            class="foto-mobil" alt="Foto depan mobil" onclick="tampilkanGambar(this.src)">
+                            <img src="<?= base_url('img/' . htmlspecialchars($m['ft_blkg'], ENT_QUOTES, 'UTF-8')) ?>"
+                            class="foto-mobil" alt="Foto belakang mobil" onclick="tampilkanGambar(this.src)">
+                            <img src="<?= base_url('img/' . htmlspecialchars($m['ft_interior'], ENT_QUOTES, 'UTF-8')) ?>" 
+                            class="foto-mobil" alt="Foto interior mobil" onclick="tampilkanGambar(this.src)">
                         </td>
                         <td><?= $m['hrg_hari'] ?></td>
                         <td><?= $m['cttn_unit'] ?></td>
