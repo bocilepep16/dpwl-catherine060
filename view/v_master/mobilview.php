@@ -73,6 +73,52 @@
                                     font-size: 12px;
                                     margin: 2px 0;
                                 }
+
+                                .foto-mobil {
+                                    width: 120px;
+                                    height: 75px;
+                                    object-fit: contain;
+                                    display: block;
+                                    margin-bottom: 5px;
+                                    cursor: zoom-in;
+                                    transition: transform 0.2s;
+                                }
+
+                                .foto-mobil:hover {
+                                    transform: scale(1.04);
+                                }
+
+                                .modal-gambar {
+                                    display: none;
+                                    position: fixed;
+                                    z-index: 99999;
+                                    inset: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    background: rgba(0, 0, 0, 0.85);
+                                    justify-content: center;
+                                    align-items: center;
+                                    padding: 20px;
+                                }
+
+                                .modal-gambar img {
+                                    max-width: 90%;
+                                    max-height: 85vh;
+                                    object-fit: contain;
+                                    background: white;
+                                    border-radius: 8px;
+                                    padding: 5px;
+                                }
+
+                                .tutup-gambar {
+                                    position: absolute;
+                                    top: 20px;
+                                    right: 35px;
+                                    color: white;
+                                    font-size: 40px;
+                                    cursor: pointer;
+                                    line-height: 1;
+                                }
                             </style>
     <div class="table-mobil-responsive">
       <table class="table table-bordered table-striped">
