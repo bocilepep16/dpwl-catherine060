@@ -99,7 +99,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Foto KTP (ft_ktp060)</label>
+                                    <label>Foto KTP (ft_ktp)</label>
                                     <input type="file"
                                            name="ft_ktp060"
                                            class="form-control-file"
@@ -111,7 +111,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Foto SIM A (ft_sim_a060)</label>
+                                    <label>Foto SIM A (ft_sim_a)</label>
                                     <input type="file"
                                            name="ft_sim_a060"
                                            class="form-control-file"
