@@ -137,7 +137,7 @@ class Penyewa_C060 extends Controller
 
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar', $info);
-        $this->load->view('v_master/edit_penyewaview060', $data);
+        $this->load->view('v_master/update_penyewaview060', $data);
         $this->load->view('layout/footer');
     }
 
