@@ -1,8 +1,7 @@
-
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
-            <h1>Update Data Penyewa</h1>
+            <h1>Entri Data Penyewa</h1>
         </div>
     </section>
 
@@ -11,12 +10,12 @@
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <i class="fas fa-user-edit"></i>
-                        Form Update Data Penyewa
+                        <i class="fas fa-user-plus"></i>
+                        Form Entri Data Penyewa
                     </h3>
                 </div>
 
-                <form action="<?= base_url('Penyewa_C060/update_penyewa') ?>"
+                <form action="<?= base_url('Penyewa_C060/simpan') ?>"
                       method="post"
                       enctype="multipart/form-data">
 
@@ -28,8 +27,8 @@
                                     <input type="text"
                                            name="user_plg060"
                                            class="form-control"
-                                           value="<?= htmlspecialchars($penyewa['user_plg060'], ENT_QUOTES, 'UTF-8') ?>"
-                                           readonly>
+                                           placeholder="Contoh: Budi123"
+                                           required>
                                 </div>
                             </div>
 
@@ -39,7 +38,7 @@
                                     <input type="password"
                                            name="sandi060"
                                            class="form-control"
-                                           value="<?= htmlspecialchars($penyewa['sandi060'], ENT_QUOTES, 'UTF-8') ?>"
+                                           placeholder="Masukkan kata sandi"
                                            required>
                                 </div>
                             </div>
@@ -51,7 +50,7 @@
                                            name="nik060"
                                            class="form-control"
                                            maxlength="20"
-                                           value="<?= htmlspecialchars($penyewa['nik060'], ENT_QUOTES, 'UTF-8') ?>"
+                                           placeholder="Nomor Induk Kependudukan"
                                            required>
                                 </div>
                             </div>
@@ -62,7 +61,7 @@
                                     <input type="text"
                                            name="nm_lngkp060"
                                            class="form-control"
-                                           value="<?= htmlspecialchars($penyewa['nm_lngkp060'], ENT_QUOTES, 'UTF-8') ?>"
+                                           placeholder="Nama lengkap"
                                            required>
                                 </div>
                             </div>
@@ -74,7 +73,7 @@
                                            name="no_hp060"
                                            class="form-control"
                                            maxlength="20"
-                                           value="<?= htmlspecialchars($penyewa['no_hp060'], ENT_QUOTES, 'UTF-8') ?>"
+                                           placeholder="Contoh: 081234567890"
                                            required>
                                 </div>
                             </div>
@@ -86,13 +85,12 @@
                                               class="form-control"
                                               rows="3"
                                               placeholder="Masukkan alamat lengkap penyewa"
-                                              required><?= htmlspecialchars($penyewa['almt_lngkp060'], ENT_QUOTES, 'UTF-8') ?></textarea>
+                                              required></textarea>
                                 </div>
                             </div>
                         </div>
 
                         <hr>
-
                         <h5>
                             <i class="fas fa-id-card"></i>
                             Dokumen Identitas
@@ -101,53 +99,25 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Foto KTP (ft_ktp060)</label>
-
-                                    <?php if (!empty($penyewa['ft_ktp060'])): ?>
-                                        <div class="mb-2">
-                                            <img
-                                                src="<?= base_url('img/' . rawurlencode($penyewa['ft_ktp060'])) ?>"
-                                                alt="Foto KTP"
-                                                style="width:120px; height:90px; object-fit:contain"
-                                                class="img-thumbnail">
-                                        </div>
-                                    <?php endif; ?>
-
+                                    <label>Foto KTP (ft_ktp)</label>
                                     <input type="file"
                                            name="ft_ktp060"
                                            class="form-control-file"
-                                           accept=".jpg,.jpeg,.png">
-
-                                    <small class="text-muted">
-                                        Format JPG, JPEG atau PNG.
-                                        Kosongkan jika tidak ingin mengganti foto.
-                                    </small>
+                                           accept=".jpg,.jpeg,.png"
+                                           required>
+                                    <small>Format JPG, JPEG atau PNG.</small>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Foto SIM A (ft_sim_a060)</label>
-
-                                    <?php if (!empty($penyewa['ft_sim_a060'])): ?>
-                                        <div class="mb-2">
-                                            <img
-                                                src="<?= base_url('img/' . rawurlencode($penyewa['ft_sim_a060'])) ?>"
-                                                alt="Foto SIM A"
-                                                style="width:120px; height:90px; object-fit:contain"
-                                                class="img-thumbnail">
-                                        </div>
-                                    <?php endif; ?>
-
+                                    <label>Foto SIM A (ft_sim_a)</label>
                                     <input type="file"
                                            name="ft_sim_a060"
                                            class="form-control-file"
-                                           accept=".jpg,.jpeg,.png">
-
-                                    <small class="text-muted">
-                                        Format JPG, JPEG atau PNG.
-                                        Kosongkan jika tidak ingin mengganti foto.
-                                    </small>
+                                           accept=".jpg,.jpeg,.png"
+                                           required>
+                                    <small>Format JPG, JPEG atau PNG.</small>
                                 </div>
                             </div>
                         </div>
@@ -155,7 +125,7 @@
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-save"></i> Simpan Perubahan
+                            <i class="fas fa-save"></i> Simpan
                         </button>
 
                         <a href="<?= base_url('Penyewa_C060/index') ?>"
