@@ -53,7 +53,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?= base_url('Penyewa_C060/index') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Penyewa</p>
                 </a>
