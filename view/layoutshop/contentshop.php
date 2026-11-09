@@ -14,20 +14,14 @@
 
                     <div class="d-flex justify-content-center">
                         <h6>$123.00</h6>
-                        <h6 class="text-muted ml-2">
-                            <del>$123.00</del>
+                        <h6 class="text-muted ml-2"><del>$123.00</del>
                         </h6>
                     </div>
                 </div>
 
                 <div class="card-footer d-flex justify-content-between bg-light border">
-                    <a href="" class="btn btn-sm text-dark p-0">
-                        <i class="fas fa-eye text-danger mr-1"></i>View Detail
-                    </a>
-
-                    <a href="" class="btn btn-sm text-dark p-0">
-                        <i class="fas fa-shopping-cart text-info mr-1"></i>Add To Cart
-                    </a>
+                    <a href="" class="btn btn-sm text-dark p-0"> <i class="fas fa-eye text-danger mr-1"></i>View Detail </a>
+                    <a href="" class="btn btn-sm text-dark p-0"> <i class="fas fa-shopping-cart text-info mr-1"></i>Add To Cart </a>
                 </div>
             </div>
         </div>
