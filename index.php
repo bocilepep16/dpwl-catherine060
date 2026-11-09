@@ -18,7 +18,7 @@ $segment = explode('/', $url);
 // $controller = $segment[0] ?? $route['default_controller'];
 // $method = $segment[1] ?? 'index';
 
-$method = $segment[1];
+$method = $segment[1] ?? 'index';
 $parameter = $segment[2] ?? null;
 
 // $controllerName = ucfirst($controller);
