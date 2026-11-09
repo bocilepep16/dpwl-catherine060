@@ -38,3 +38,21 @@
         </div>
     </div>
     <!-- Navbar End -->
+
+    <!-- Back To Top -->
+    <a href="#" class="btn btn-primary back-to-top">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+
+    <!-- JavaScript Libraries -->
+    <script src="<?= base_url('assets/') ?>lib/easing/jquery-3.4.1.min.js"></script>
+    <script src="<?= base_url('assets/') ?>lib/easing/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url('assets/') ?>lib/easing/easing.min.js"></script>
+    <script src="<?= base_url('assets/') ?>lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="<?= base_url('assets/') ?>js/main.js"></script>
