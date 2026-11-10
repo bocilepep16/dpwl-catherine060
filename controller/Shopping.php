@@ -7,7 +7,7 @@ class Shopping extends Controller
         $dt['dtmobil'] = $cekdata->datamobil();
         $dt['EmPlg'] = $this->session->userdata('EmailPlg');
         $dt['NmPlg'] = $this->session->userdata('NmPlg');
-        $dt['psn'] = $this->session->flashdata('pesan');
+        $dt['psn'] = $this->session->set_flashdata('pesan');
         $this->load->view('layoutshop/headershop', $dt);
         $this->load->view('layoutshop/menushop');
         $this->load->view('layoutshop/slidershop', $dt);
