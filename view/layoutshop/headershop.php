@@ -87,7 +87,14 @@
                 </a>
             </div>
            <div class="col-lg-12 text-right">
-                <a href="" class="btn btn-info">Login</a>
+                <?php if (!empty($EmPlg)) { 
+                    echo '<i>Selamat Datang, ' . $NmPlg . '</i>';?>
+                    <a href="<?= base_url('Login_C/keluar') ?>" class="btn btn-info">Logout</a>
+                <?php } else { ?>
+                    <i>Noname</i> <a href="<?= base_url('Login_C/penyewa') ?>" class="btn btn-info">Login</a>
+                <?php
+                }
+                ?>
            </div>
         </div>
     </div>
