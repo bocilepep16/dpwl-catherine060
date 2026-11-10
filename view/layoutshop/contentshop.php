@@ -3,19 +3,19 @@
 <div class="container-fluid pt-5">
     <div class="row px-xl-5 pb-3">
 
+        <?php foreach ($dtmobil as $m) : ?>
+
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
             <div class="card product-item border-0 mb-4">
                 <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                    <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
+                    <img class="img-fluid w-100" src="<?= base_url('img/' . $m['ft_depan']) ?>" alt="<?= $m['nm_mobil'] ?>"
                 </div>
 
                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                    <h6 class="text-truncate mb-3">Pajero</h6>
+                   <h6 class="text-truncate mb-3"> <?= $m['nm_mobil'] ?></h6>
 
                     <div class="d-flex justify-content-center">
-                        <h6>250000/hari</h6>
-                        <h6 class="text-muted ml-2"><del>300000/hari</del>
-                        </h6>
+                       <h6> <?= number_format($m['hrg_hari'] ?? 0, 0, ',', '.') ?>/hari </h6>
                     </div>
                 </div>
 
@@ -25,6 +25,7 @@
                 </div>
             </div>
         </div>
+        <?php endforeach; ?>
 
     </div>
 </div>
