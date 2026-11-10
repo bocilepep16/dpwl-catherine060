@@ -9,5 +9,6 @@ class Shopping extends Controller
         $this->load->view('layoutshop/menushop');
         $this->load->view('layoutshop/slidershop', $dt);
         $this->load->view('layoutshop/contentshop', $dt);
+        $this->load->view('layoutshop/footershop');
     }
 }
