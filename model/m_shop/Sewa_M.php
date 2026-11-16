@@ -86,6 +86,23 @@ class Sewa_M extends Model
         $data = $hasil->fetch_assoc();
         return $data ? $data['kode_sewa'] : false;
     }
+
+    public function DataKeranjang($email)
+    {
+        $sql = $this->db->prepare(
+            "SELECT sewa.kode_sewa, COUNT(pilih.no_plat) AS jumlah
+            FROM sewa
+            INNER JOIN pilih ON sewa.kode_sewa = pilih.kode_sewa
+            WHERE sewa.user_plg = ?
+            AND sewa.status_sewa = 'Keranjang'
+            GROUP BY sewa.kode_sewa"
+        );
+        $sql->bind_param("s", $email);
+        $sql->execute();
+        $hasil = $sql->get_result();
+        $data = $hasil->fetch_assoc();
+        return $data ? $data['jumlah'] : 0;
+    }
 }
 
 
