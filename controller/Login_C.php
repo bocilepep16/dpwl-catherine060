@@ -20,9 +20,9 @@ class Login_C extends Controller
             $password = $this->load->post('pass');
             $cekdata = $this->load->model('LoginPlg_M');
             $datauser = $cekdata->DataPlg($email);
-            if ($datauser && password_verify($password, $datauser['sandi'])) {
+            if ($datauser && $password === $datauser['sandi060']) {
                 $this->session->set_userdata('EmailPlg', $email);
-                $this->session->set_userdata('NmPlg', $datauser['nm_lngkp']);
+                $this->session->set_userdata('NmPlg', $datauser['nm_lngkp060']);
                 $this->session->set_flashdata('pesan', 'Login berhasil...');
                 redirect('Shopping/index');
             } else {
