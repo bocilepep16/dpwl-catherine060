@@ -38,6 +38,29 @@ class Sewa_M extends Model
             return false;
         }
     }
+
+    // Simpan Detail
+    public function simpandetail($data_pilih)
+    {
+        // Simpan HEADER ke tabel sewa
+        $sql = $this->db->prepare(
+            "INSERT INTO pilih
+            (kode_sewa, no_plat, hrg_sewa, n_hari)
+            VALUES (?, ?, ?, ?)"
+        );
+        $sql->bind_param(
+            "ssdi",
+            $data_pilih['kode_sewa'],
+            $data_pilih['no_plat'],
+            $data_pilih['hrg_sewa'],
+            $data_pilih['n_hari']
+        );
+        if ($sql->execute()) {
+            return $data_pilih['kode_sewa'];
+        } else {
+            return false;
+        }
+    }
 }
 
 
