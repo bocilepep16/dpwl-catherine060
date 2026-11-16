@@ -18,7 +18,7 @@ class Shopping extends Controller
     public function detail($no_plat)
     {
         $cekdata = $this->load->model('m_master/Mobil_M');
-        $dt['mobil'] = $cekdata->detailmobil($no_plat);
+        $dt['mobil'] = $cekdata->getMobilByPlat($no_plat);
         $dt['EmpLg'] = $this->session->userdata('EmailPlg');
         $dt['NmPlg'] = $this->session->userdata('NmPlg');
 
