@@ -14,7 +14,8 @@ class Sewa_C extends Controller
         }
 
         $sewa = $this->load->model('m_shop/Sewa_M');
-        $kode = $sewa->buat_kode_sewa();
+        $kode = $sewa->CekTransaksi($email);
+        if (!$kode) {
         // HEADER: Tabel sewa
         $data_sewa = [
             'kode_sewa'   => $kode,
@@ -24,7 +25,7 @@ class Sewa_C extends Controller
             'user_plg'    => $email
         ];
         $hasil = $sewa->simpan($data_sewa);
-
+        }
         // Data detail
         $hrgmobil = $this->load->model('m_master/Mobil_M');
         $ambilhrg = $hrgmobil->detailmobil($no_plat);
