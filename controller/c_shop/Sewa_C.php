@@ -26,16 +26,27 @@ class Sewa_C extends Controller
         ];
         $hasil = $sewa->simpan($data_sewa);
         }
-        // Data detail
-        $hrgmobil = $this->load->model('m_master/Mobil_M');
-        $ambilhrg = $hrgmobil->detailmobil($no_plat);
-        $data_pilih = [
-            'kode_sewa' => $kode,
-            'no_plat'   => $no_plat,
-            'hrg_sewa'  => $ambilhrg['hrg_hari'],
-            'n_hari'    => 0
-        ];
-        $dtpilih = $sewa->simpandetail($data_pilih);
+
+        //Cek keberadaan data mobil
+        $cekdata = $sewa->CekDataPilih($kode, $no_plat);
+        if (!$cekdata) {
+          // Data detail
+          $hrgmobil = $this->load->model('m_master/Mobil_M');
+          $ambilhrg = $hrgmobil->detailmobil($no_plat);
+          $data_pilih = [
+              'kode_sewa' => $kode,
+              'no_plat'   => $no_plat,
+              'hrg_sewa'  => $ambilhrg['hrg_hari'],
+              'n_hari'    => 0
+          ];
+          $dtpilih = $sewa->simpandetail($data_pilih);
+        } else {
+            echo "<script>
+                alert('Mobil Sudah dipilih..!');
+                window.location.href = '" . base_url('shopping') . "';
+            </script>";
+            exit;
+        }
 
         if ($hasil !== false) {
             echo "<script>
