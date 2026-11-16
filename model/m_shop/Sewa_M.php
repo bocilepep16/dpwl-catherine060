@@ -61,6 +61,19 @@ class Sewa_M extends Model
             return false;
         }
     }
+
+    public function CekTransaksi($email)
+    {
+        $sql = $this->db->prepare(
+            "SELECT * FROM sewa WHERE user_plg=? and status_sewa='Keranjang'"
+        );
+        $sql->bind_param("s", $email);
+        $sql->execute();
+        $hasil = $sql->get_result();
+        $data = $hasil->fetch_assoc();
+
+        return $data ? $data['kode_sewa'] : false;
+    }
 }
 
 
