@@ -74,6 +74,18 @@ class Sewa_M extends Model
 
         return $data ? $data['kode_sewa'] : false;
     }
+
+    public function CekDataPilih($kode, $no_plat)
+    {
+        $sql = $this->db->prepare(
+            "SELECT * FROM pilih where kode_sewa=? and no_plat=?"
+        );
+        $sql->bind_param("ss", $kode, $no_plat);
+        $sql->execute();
+        $hasil = $sql->get_result();
+        $data = $hasil->fetch_assoc();
+        return $data ? $data['kode_sewa'] : false;
+    }
 }
 
 
