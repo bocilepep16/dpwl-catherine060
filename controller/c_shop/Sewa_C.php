@@ -16,6 +16,7 @@ class Sewa_C extends Controller
         $sewa = $this->load->model('m_shop/Sewa_M');
         $kode = $sewa->CekTransaksi($email);
         if (!$kode) {
+            $kode = $sewa->buat_kode_sewa();
         // HEADER: Tabel sewa
         $data_sewa = [
             'kode_sewa'   => $kode,
@@ -32,7 +33,7 @@ class Sewa_C extends Controller
         if (!$cekdata) {
           // Data detail
           $hrgmobil = $this->load->model('m_master/Mobil_M');
-          $ambilhrg = $hrgmobil->detailmobil($no_plat);
+          $ambilhrg = $hrgmobil->getMobilByPlat($no_plat);
           $data_pilih = [
               'kode_sewa' => $kode,
               'no_plat'   => $no_plat,
@@ -48,7 +49,7 @@ class Sewa_C extends Controller
             exit;
         }
 
-        if ($hasil !== false) {
+        if ($dtpilih !== false) {
             echo "<script>
         alert('Mobil berhasil dimasukkan ke keranjang!');
         window.location.href = '" . base_url('shopping') . "';
