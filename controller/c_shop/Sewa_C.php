@@ -79,6 +79,40 @@ class Sewa_C extends Controller
             echo "<script>alert('Data mobil di keranjang gagal dihapus!');window.history.back();</script>";
         }
     }
+
+    public function updatekeranjang()
+    {
+        $kode_sewa   = $_POST['kode_sewa'] ?? '';
+        $tgl_mulai   = $_POST['tgl_mulai'] ?? '';
+        $tgl_selesai = $_POST['tgl_selesai'] ?? '';
+        $wkt_ambil   = $_POST['wkt_ambil'] ?? '';
+        // Validasi format tanggal
+        $mulai   = DateTime::createFromFormat('Y-m-d', $tgl_mulai);
+        $selesai = DateTime::createFromFormat('Y-m-d', $tgl_selesai);
+        // Hitung lama sewa berdasarkan selisih tanggal
+        $n_hari = $mulai->diff($selesai)->days;
+        // Jika tanggal sama, dianggap menyewa minimal 1 hari
+        if ($n_hari < 1) {
+            $n_hari = 1;
+        }
+        // Ubah format datetime-local menjadi format MySQL
+        $wkt_ambil = str_replace('T', ' ', $wkt_ambil);
+        $model = $this->load->model('m_shop/Sewa_M');
+        $data = [
+            'kode_sewa'   => $kode_sewa,
+            'tgl_mulai'   => $tgl_mulai,
+            'tgl_selesai' => $tgl_selesai,
+            'wkt_ambil'   => $wkt_ambil,
+            'n_hari'      => $n_hari
+        ];
+        $hasil = $model->UpdateKeranjang($data);
+        if ($hasil) {
+            $this->session->set_flashdata('pesan', 'Keranjang berhasil diperbarui...');
+        } else {
+            $this->session->set_flashdata('pesan', 'Keranjang gagal diperbarui...');
+        }
+        redirect('Sewa_C/keranjang');
+    }
 }
 
 
