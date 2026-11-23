@@ -112,6 +112,33 @@ class Sewa_M extends Model
         $dtmobil->close();
         return $hasil;
     }
+
+    public function UpdateKeranjang($data)
+    {
+        // Update tabel sewa
+        $stmt1 = $this->db->prepare("UPDATE sewa SET tgl_mulai = ?, tgl_selesai = ?, wkt_ambil = ? WHERE kode_sewa = ?");
+        $stmt1->bind_param(
+            "ssss",
+            $data['tgl_mulai'],
+            $data['tgl_selesai'],
+            $data['wkt_ambil'],
+            $data['kode_sewa']
+        );
+        $stmt1->execute();
+        $stmt1->close();
+
+        // Update tabel pilih
+        $stmt2 = $this->db->prepare("UPDATE pilih SET n_hari = ? WHERE kode_sewa = ?");
+        $stmt2->bind_param(
+            "is",
+            $data['n_hari'],
+            $data['kode_sewa']
+        );
+        $stmt2->execute();
+        $stmt2->close();
+        $this->db->commit();
+        return true;
+    }
 }
 
 
