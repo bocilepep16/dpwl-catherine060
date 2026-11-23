@@ -15,6 +15,11 @@ if ($ada_keranjang) {
     <div class="row">
         <div class="col-12">
             <!-- INFORMASI TRANSAKSI -->
+             <?php
+            if (!empty($pesan)) {
+                echo "<script>alert('" . $pesan . "');</script>";
+            }
+            ?>
             <div class="card shadow-sm mb-4">
                 <div class="card-header">
                     <h4>Informasi Transaksi</h4>
