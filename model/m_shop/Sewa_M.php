@@ -103,6 +103,15 @@ class Sewa_M extends Model
         $data = $hasil->fetch_assoc();
         return $data ? $data['jumlah'] : 0;
     }
+
+    public function HapusDtKeranjang($no_plat, $kode_sewa)
+    {
+        $dtmobil = $this->db->prepare("DELETE FROM pilih WHERE no_plat = ? and kode_sewa = ?");
+        $dtmobil->bind_param("ss", $no_plat, $kode_sewa);
+        $hasil = $dtmobil->execute();
+        $dtmobil->close();
+        return $hasil;
+    }
 }
 
 
