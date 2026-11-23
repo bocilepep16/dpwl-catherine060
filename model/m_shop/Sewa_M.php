@@ -155,6 +155,29 @@ class Sewa_M extends Model
         $this->db->commit();
         return true;
     }
+
+    public function datacheckout($kode_sewa)
+    {
+        $sql = "SELECT
+                    s.kode_sewa,
+                    s.tgl_mulai,
+                    s.tgl_selesai,
+                    s.wkt_ambil,
+                    p.no_plat,
+                    p.hrg_sewa,
+                    p.n_hari,
+                    m.nm_mobil
+                FROM sewa s
+                JOIN plg p ON s.kode_sewa = p.kode_sewa
+                JOIN mobil m ON p.no_plat = m.no_plat
+                WHERE s.kode_sewa = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("s", $kode_sewa);
+        $stmt->execute();
+        $hasil = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $hasil;
+    }
 }
 
 
