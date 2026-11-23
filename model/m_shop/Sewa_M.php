@@ -178,6 +178,16 @@ class Sewa_M extends Model
         $stmt->close();
         return $hasil;
     }
+
+    public function ajukantransaksi($kode_sewa)
+    {
+        $sql = "UPDATE sewa SET status_sewa = 'Diajukan' WHERE kode_sewa = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("s", $kode_sewa);
+        $hasil = $stmt->execute();
+        $stmt->close();
+        return $hasil;
+    }
 }
 
 
