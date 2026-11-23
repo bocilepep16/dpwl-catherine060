@@ -130,7 +130,7 @@
             Kembali ke Keranjang
         </a>
         <!-- Konfirmasi Transaksi -->
-        <form action="<?= base_url('Sewa_C/ajukantransaksi') ?>" method="POST">
+        <form action="<?= base_url('Sewa_C/ajukantransaksi/' . $kode_sewa) ?>" method="POST">
             <input type="hidden" name="kode_sewa"
                    value="<?= htmlspecialchars($kode_sewa) ?>">
             <button type="submit" class="btn btn-success">
