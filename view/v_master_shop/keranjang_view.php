@@ -179,7 +179,7 @@ if ($ada_keranjang) {
                                     <i class="fas fa-arrow-left mr-1"></i>
                                     Pilih Mobil
                                 </a>
-                        <a href="<?= base_url('Sewa_C/checkout'); ?>"
+                        <a href="<?= base_url('Sewa_C/checkout/' . $kode_sewa); ?>"
                             class="btn btn-success btn-lg btn-block">
                             <i class="fa fa-arrow-right"></i>
                             Checkout / Lihat Konfirmasi
