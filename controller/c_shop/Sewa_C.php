@@ -162,6 +162,23 @@ class Sewa_C extends Controller
         $this->load->view('v_master_shop/checkout_view', $dt);
         $this->load->view('layoutshop/footershop');
     }
+
+    public function ajukantransaksi($kode_sewa)
+    {
+        $model = $this->load->model('m_shop/Sewa_M');
+        $hasil = $model->ajukantransaksi($kode_sewa);
+        if ($hasil) {
+            echo "<script>
+                alert('Transaksi berhasil diajukan. Silakan lanjutkan pembayaran DP 30% dari total Pembayaran...');
+                window.location.href = '" . base_url('Shopping') . "';
+            </script>";
+        } else {
+            echo "<script>
+                alert('Pengajuan transaksi gagal.');
+                window.location.href = '" . base_url('Sewa_C/keranjang') . "';
+            </script>";
+        }
+    }
 }
 
 
