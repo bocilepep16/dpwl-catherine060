@@ -64,6 +64,30 @@ class Sewa_C extends Controller
         }
     }
 
+    public function keranjang()
+    {
+        $email = $this->session->userdata('EmailPlg');
+        if (!$email) {
+            echo "<script>
+                alert('Silakan login terlebih dahulu!');
+                window.location = '" . base_url('login') . "';
+            </script>";
+                exit;
+        }
+        $sewa = $this->load->model('m_shop/Sewa_M');
+        $datakeranjang = $sewa->DtKeranjang($email);
+        $data = [
+            'datakeranjang' => $datakeranjang
+        ];
+        $cekdata = $this->load->model('m_shop/Sewa_M'); // Cari data keranjang
+        $dt['dtkeranjang'] = $cekdata->DataKeranjang($this->session->userdata('EmailPlg'));
+        $data['pesan'] = $this->session->set_flashdata('pesan');
+        $this->load->view('layoutshop/headerShop', $dt);
+        $this->load->view('layoutshop/menushop');
+        $this->load->view('layoutshop/keranjang_view', $data);
+        $this->load->view('layoutshop/footershop');
+    }
+
     public function hapus($parameter)
     {
         $data = explode('|', $parameter);
