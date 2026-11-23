@@ -137,6 +137,31 @@ class Sewa_C extends Controller
         }
         redirect('Sewa_C/keranjang');
     }
+
+    public function checkout($kode_sewa)
+    {
+        $model = $this->load->model('m_shop/Sewa_M');
+        $dt['dtcheckout'] = $model->datacheckout($kode_sewa);
+        $sewa = $dt['dtcheckout'][0];
+        $dt['kode_sewa'] = $sewa['kode_sewa'];
+        $dt['tgl_mulai'] = $sewa['tgl_mulai'];
+        $dt['tgl_selesai'] = $sewa['tgl_selesai'];
+        $dt['wkt_ambil'] = $sewa['wkt_ambil'];
+        $total_sewa = 0;
+        foreach ($dt['dtcheckout'] as $m) {
+            $subtotal = $m['hrg_sewa'] * $m['n_hari'];
+            $total_sewa += $subtotal;
+        }
+        $cekdata = $this->load->model('m_shop/sewa_M');
+        $dt['total_sewa'] = $total_sewa;
+        $dt['dp'] = $total_sewa * 0.30;
+        $dt['sisa'] = $total_sewa - $dt['dp'];
+        $dt['dtkeranjang'] = $cekdata->DataKeranjang($this->session->userdata('EmailPlg'));
+        $this->load->view('layoutshop/headershop', $dt);
+        $this->load->view('layoutshop/menushop');
+        $this->load->view('v_master_shop/checkout_view', $dt);
+        $this->load->view('layoutshop/footershop');
+    }
 }
 
 
