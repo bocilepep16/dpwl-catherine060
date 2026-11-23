@@ -63,6 +63,22 @@ class Sewa_C extends Controller
             exit;
         }
     }
+
+    public function hapus($parameter)
+    {
+        $data = explode('|', $parameter);
+        $no_plat = $data[0];
+        $kode_sewa = $data[1];
+        $mobil = $this->load->model('m_shop/Sewa_M');
+        $hapus = $mobil->HapusDtKeranjang($no_plat, $kode_sewa);
+        if ($hapus) {
+            echo "<script>alert('Data mobil di keranjang berhasil dihapus!');
+            window.location.href = '" . base_url('Sewa_C/keranjang') . "';
+            </script>";
+        } else {
+            echo "<script>alert('Data mobil di keranjang gagal dihapus!');window.history.back();</script>";
+        }
+    }
 }
 
 
