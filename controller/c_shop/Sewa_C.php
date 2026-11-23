@@ -84,7 +84,7 @@ class Sewa_C extends Controller
         $data['pesan'] = $this->session->set_flashdata('pesan');
         $this->load->view('layoutshop/headerShop', $dt);
         $this->load->view('layoutshop/menushop');
-        $this->load->view('layoutshop/keranjang_view', $data);
+        $this->load->view('v_master_shop/keranjang_view', $data);
         $this->load->view('layoutshop/footershop');
     }
 
