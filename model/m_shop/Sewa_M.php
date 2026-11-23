@@ -168,7 +168,7 @@ class Sewa_M extends Model
                     p.n_hari,
                     m.nm_mobil
                 FROM sewa s
-                JOIN plg p ON s.kode_sewa = p.kode_sewa
+                JOIN pilih p ON s.kode_sewa = p.kode_sewa
                 JOIN mobil m ON p.no_plat = m.no_plat
                 WHERE s.kode_sewa = ?";
         $stmt = $this->db->prepare($sql);
