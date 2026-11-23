@@ -163,7 +163,7 @@ class Sewa_C extends Controller
         $this->load->view('layoutshop/footershop');
     }
 
-    public function ajukantransaksi($kode_sewa)
+    public function ajukantransaksi($kode_sewa = null)
     {
         $model = $this->load->model('m_shop/Sewa_M');
         $hasil = $model->ajukantransaksi($kode_sewa);
