@@ -104,6 +104,22 @@ class Sewa_M extends Model
         return $data ? $data['jumlah'] : 0;
     }
 
+    public function DtKeranjang($email)
+    {
+        $sql = "SELECT pilih.no_plat, pilih.kode_sewa, pilih.n_hari, mobil.nm_mobil, mobil.hrg_hari,
+                    mobil.ft_depan, sewa.tgl_mulai, sewa.tgl_selesai, sewa.wkt_ambil, sewa.status_sewa
+                FROM pilih
+                JOIN mobil ON pilih.no_plat = mobil.no_plat
+                JOIN sewa ON pilih.kode_sewa = sewa.kode_sewa
+                WHERE sewa.user_plg = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $hasil = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $hasil;
+    }
+
     public function HapusDtKeranjang($no_plat, $kode_sewa)
     {
         $dtmobil = $this->db->prepare("DELETE FROM pilih WHERE no_plat = ? and kode_sewa = ?");
